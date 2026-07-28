@@ -1,17 +1,36 @@
-# Data Analysis Portfolio
+# Applied Data Science
+
+**Projects in statistics, ML, and deep learning.**
 
 Ten self-contained analyses in Python — statistical inference, exploratory data analysis,
 resampling, natural language processing, regression, text classification, unsupervised
 machine learning, deep learning, and computer vision. Each project states a question up
 front, shows the work, and ends with findings and their limitations.
 
-Every notebook runs top to bottom from a clean checkout (see [Setup](#setup)). Projects 02
-and 05 use datasets that aren't redistributable; each has a `data/README.md` with a
-one-line download.
+Every notebook runs top to bottom (see [Setup](#setup)), and all but two ship with their
+outputs committed, so the analyses read without being run. Projects 02, 05, and 06 use
+datasets that aren't redistributable; each has a `data/README.md` with a one-line download,
+and **02 and 05 need theirs before they will produce any output.**
+
+| | project | in one line |
+|---|---|---|
+| **[01](01-health-metrics-correlation/)** | Grip strength correlation | At *n* = 10, "we can't tell" is the only honest conclusion |
+| **[03](03-diabetes-sampling-bootstrap/)** | Sampling and bootstrap | One 25-patient sample overstates mean glucose by 7.8% |
+| **[02](02-student-performance-eda/)** | Student performance EDA | Test preparation is the clearest — and only actionable — separator |
+| **[06](06-housing-price-regression/)** | Housing price regression | The random seed moves R² further than any modelling choice |
+| **[05](05-credit-card-customer-segmentation/)** | Customer segmentation | The highest silhouette score comes from the least useful clustering |
+| **[04](04-covid-tweet-text-analysis/)** | COVID tweet text analysis | Naive tokenisation makes `https` the corpus's top "topic" |
+| **[07](07-newsgroup-text-classification/)** | Newsgroup classification | 21.7% of the reported accuracy was metadata leakage |
+| **[08](08-neural-network-fundamentals/)** | Neural network fundamentals | The original trained on the test set: 3.0 points of fiction |
+| **[09](09-cifar10-cnn/)** | CIFAR-10 CNN | Convolution is worth 31 points, from 9.8% of the parameters |
+| **[10](10-tweet-sentiment-lstm/)** | LSTM tweet sentiment | Every sequence model loses to a bag of words |
+
+Projects 06–10 share a through-line: each one finds a real methodological fault in its
+source and **measures** what it was worth, rather than asserting it.
 
 ---
 
-## Projects
+## Statistics & inference
 
 ### [01 · Do height and weight predict grip strength?](01-health-metrics-correlation/)
 Correlation analysis with confidence intervals on a 10-observation health dataset.
@@ -24,21 +43,6 @@ the data, so "we can't tell" is the only honest conclusion.
 `pandas` · `scipy.stats` · `matplotlib`
 
 <img src="01-health-metrics-correlation/results/grip_strength_scatter.png" width="620">
-
----
-
-### [02 · What predicts student exam performance?](02-student-performance-eda/)
-Exploratory analysis of 1,000 students across gender, parental education, lunch type, and
-test preparation.
-
-Test preparation shows the clearest separation — and it's the only variable in the dataset
-a school can actually act on. Lunch type (a socioeconomic proxy) separates the
-distributions nearly as sharply.
-
-`pandas` · `matplotlib` · `seaborn`
-
-> The source CSV isn't redistributed here — see [`data/README.md`](02-student-performance-eda/data/README.md)
-> for a one-line download. Saved plots are preserved so the analysis reads without it.
 
 ---
 
@@ -57,38 +61,24 @@ does not.
 
 ---
 
-### [04 · What were people tweeting about in early COVID-19?](04-covid-tweet-text-analysis/)
-NLP on 3,798 tweets from March 2020: tokenisation, stopword removal, frequency analysis,
-and a sentiment-split comparison.
+## Exploratory analysis
 
-Naive tokenisation makes `https` the most common token in the corpus — an artefact, not a
-topic. After stripping URLs, mentions, and HTML entities, the real subject emerges:
-**grocery supply**, not medicine. A log-ratio comparison then splits the vocabulary by
-sentiment — `panic`, `fear`, `crisis`, `empty` on one side; `thank`, `support`, `safe`,
-`small business` on the other.
+### [02 · What predicts student exam performance?](02-student-performance-eda/)
+Exploratory analysis of 1,000 students across gender, parental education, lunch type, and
+test preparation.
 
-`nltk` · `pandas` · `wordcloud` · `matplotlib`
+Test preparation shows the clearest separation — and it's the only variable in the dataset
+a school can actually act on. Lunch type (a socioeconomic proxy) separates the
+distributions nearly as sharply.
 
-<img src="04-covid-tweet-text-analysis/results/top_tokens.png" width="620">
+`pandas` · `matplotlib` · `seaborn`
 
----
-
-### [05 · Segmenting credit-card customers with PCA and K-means](05-credit-card-customer-segmentation/)
-Unsupervised clustering of 8,950 customers, scored by silhouette across raw, standardised,
-and PCA-reduced feature spaces.
-
-Raw features give the **highest** silhouette score — and the least useful clustering. Six
-features are bounded in [0, 1] while `TENURE` runs 6–12, so that one feature dominates the
-distance metric and K-means effectively clusters on tenure alone. Silhouette rewards the
-resulting tight bands. The project's point is that **a higher score is not automatically a
-better model**, and that silhouette is only comparable within the space the model was fitted in.
-
-`scikit-learn` · `pandas` · `matplotlib`
-
-> Dataset not redistributed — see [`data/README.md`](05-credit-card-customer-segmentation/data/README.md).
-> Figures generate on first run.
+> The source CSV isn't redistributed here — see [`data/README.md`](02-student-performance-eda/data/README.md)
+> for a one-line download. Figures generate on first run.
 
 ---
+
+## Machine learning
 
 ### [06 · What is a house worth, and how sure can we be?](06-housing-price-regression/)
 Linear regression on 1,460 Ames home sales, using the 36 numeric features.
@@ -110,6 +100,41 @@ misses.
 
 ---
 
+### [05 · Segmenting credit-card customers with PCA and K-means](05-credit-card-customer-segmentation/)
+Unsupervised clustering of 8,950 customers, scored by silhouette across raw, standardised,
+and PCA-reduced feature spaces.
+
+Raw features give the **highest** silhouette score — and the least useful clustering. Six
+features are bounded in [0, 1] while `TENURE` runs 6–12, so that one feature dominates the
+distance metric and K-means effectively clusters on tenure alone. Silhouette rewards the
+resulting tight bands. The project's point is that **a higher score is not automatically a
+better model**, and that silhouette is only comparable within the space the model was fitted in.
+
+`scikit-learn` · `pandas` · `matplotlib`
+
+> Dataset not redistributed — see [`data/README.md`](05-credit-card-customer-segmentation/data/README.md).
+> Figures generate on first run.
+
+---
+
+## Natural language processing
+
+### [04 · What were people tweeting about in early COVID-19?](04-covid-tweet-text-analysis/)
+NLP on 3,798 tweets from March 2020: tokenisation, stopword removal, frequency analysis,
+and a sentiment-split comparison.
+
+Naive tokenisation makes `https` the most common token in the corpus — an artefact, not a
+topic. After stripping URLs, mentions, and HTML entities, the real subject emerges:
+**grocery supply**, not medicine. A log-ratio comparison then splits the vocabulary by
+sentiment — `panic`, `fear`, `crisis`, `empty` on one side; `thank`, `support`, `safe`,
+`small business` on the other.
+
+`nltk` · `pandas` · `wordcloud` · `matplotlib`
+
+<img src="04-covid-tweet-text-analysis/results/top_tokens.png" width="620">
+
+---
+
 ### [07 · A text classifier that was reading the wrong thing](07-newsgroup-text-classification/)
 TF-IDF and multinomial Naive Bayes across the 20 Newsgroups corpus.
 
@@ -128,6 +153,8 @@ the set and cannot do better — that ceiling belongs to the label taxonomy, not
 <img src="07-newsgroup-text-classification/results/per_class_recall.png" width="620">
 
 ---
+
+## Deep learning
 
 ### [08 · What does a neural network actually buy you?](08-neural-network-fundamentals/)
 The same feed-forward architecture on two deliberately different problems, each measured
@@ -223,8 +250,8 @@ at all, so it reported a fixed seventh epoch, well past where the model began ge
 ## Setup
 
 ```bash
-git clone https://github.com/m-nweke/data-analysis-portfolio.git
-cd data-analysis-portfolio
+git clone https://github.com/m-nweke/applied-data-science.git
+cd applied-data-science
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 jupyter lab
@@ -232,6 +259,10 @@ jupyter lab
 
 Notebooks read data via paths relative to their own directory, so run them from within
 each project's `notebooks/` folder.
+
+Projects 08–10 need TensorFlow, which does not yet publish wheels for the newest Python
+releases — **use Python 3.12**. Everything was executed against Python 3.12 with
+TensorFlow 2.21 and Keras 3.15, on CPU; no GPU is required.
 
 ## Repository layout
 
@@ -245,11 +276,16 @@ each project's `notebooks/` folder.
 
 ## Notes
 
-These analyses began as graduate coursework (CS5530 / CS5531) and have since been
-reworked: bugs fixed, hardcoded Colab paths removed, methodology tightened, and findings
-rewritten to state their own limitations. Project 05 additionally corrects two errors in
-the original that invalidated its headline comparison — see its
-[README](05-credit-card-customer-segmentation/) for what changed and why it mattered.
+These analyses began as graduate coursework (CS5530 / CS5531 / CS5590) and have since been
+reworked: bugs fixed, hardcoded Colab paths removed, deprecated Keras APIs migrated,
+methodology tightened, and findings rewritten to state their own limitations.
+
+Where an original's reported number turned out to be wrong, the correction is measured and
+written up rather than quietly dropped — see projects
+[05](05-credit-card-customer-segmentation/), [06](06-housing-price-regression/),
+[07](07-newsgroup-text-classification/), [08](08-neural-network-fundamentals/),
+[09](09-cifar10-cnn/), and [10](10-tweet-sentiment-lstm/). No figure appears in these
+READMEs that wasn't produced by the committed run of its notebook.
 
 ## License
 

@@ -1,5 +1,11 @@
-# Verified working set — every notebook in this repo was executed end-to-end
-# against these versions on Python 3.12.
+# Verified working set. Every notebook that ships with committed outputs was
+# executed end-to-end against these versions on Python 3.12. Projects 02 and 05
+# ship without outputs — their input CSVs aren't redistributable, so they have to
+# be downloaded first (see each project's data/README.md).
+#
+# TensorFlow does not yet publish wheels for the newest Python releases, so 3.12
+# is the version to build the environment with. Projects 08-10 need it; the rest
+# do not. Everything was run on CPU — no GPU required.
 
 pandas>=2.2,<4
 numpy>=1.26,<3
@@ -9,6 +15,9 @@ seaborn>=0.13
 scikit-learn>=1.3
 nltk>=3.8
 wordcloud>=1.9
+
+# Deep learning (projects 08-10)
+tensorflow>=2.19
 
 # Notebook environment
 jupyterlab>=4.0
