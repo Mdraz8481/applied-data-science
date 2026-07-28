@@ -18,7 +18,7 @@ mv train.csv houses_dataset.csv
 Final location:
 
 ```
-06-housing-price-regression/data/houses_dataset.csv
+04-housing-price-regression/data/houses_dataset.csv
 ```
 
 The dataset originates with Dean De Cock, *Ames, Iowa: Alternative to the Boston Housing

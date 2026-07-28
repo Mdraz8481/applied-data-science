@@ -1,6 +1,6 @@
 # Does Reading Word Order Help?
 
-[Project 04](../04-covid-tweet-text-analysis/) analysed 3,798 COVID-19 tweets by counting
+[Project 06](../06-covid-tweet-text-analysis/) analysed 3,798 COVID-19 tweets by counting
 words — tokenise, strip stopwords, compare frequencies between sentiment classes. That
 throws away word order entirely: *"not worried at all"* and *"worried, not at all"* are
 the same bag of words.
@@ -14,12 +14,12 @@ cannot. This project asks whether that helps — on the same tweets, scored the 
 ## Data
 
 The COVID-19 tweet corpus already committed for
-[project 04](../04-covid-tweet-text-analysis/) — 3,798 tweets, five sentiment labels
+[project 06](../06-covid-tweet-text-analysis/) — 3,798 tweets, five sentiment labels
 collapsed to three (negative / neutral / positive), split 2,544 train / 1,254 test.
 
 > **Dataset substitution.** The original coursework read `Sentiment.csv`, a Kaggle
 > GOP-debate tweet set loaded from a Colab path. That file isn't present in any source
-> repository or submission archive and isn't redistributable here. Using project 04's
+> repository or submission archive and isn't redistributable here. Using project 06's
 > corpus keeps the task identical — multi-class sentiment on short social text — and makes
 > this a direct comparison between counting words and reading them in order **on the same
 > tweets**. The architecture, preprocessing, and training procedure are carried over

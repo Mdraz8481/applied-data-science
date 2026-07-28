@@ -29,7 +29,7 @@ Thumbs.db
 10-tweet-sentiment-lstm/notebooks/tweet_sentiment_lstm.keras
 
 # Datasets not redistributed with this repo
-02-student-performance-eda/data/StudentsPerformance.csv
-02-student-performance-eda/data/studentsPerformance_cleaned.csv
+03-student-performance-eda/data/StudentsPerformance.csv
+03-student-performance-eda/data/studentsPerformance_cleaned.csv
 05-credit-card-customer-segmentation/data/CC.csv
-06-housing-price-regression/data/houses_dataset.csv
+04-housing-price-regression/data/houses_dataset.csv
