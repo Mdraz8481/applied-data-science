@@ -1,5 +1,5 @@
 # Verified working set. Every notebook that ships with committed outputs was
-# executed end-to-end against these versions on Python 3.12. Projects 02 and 05
+# executed end-to-end against these versions on Python 3.12. Projects 03 and 05
 # ship without outputs — their input CSVs aren't redistributable, so they have to
 # be downloaded first (see each project's data/README.md).
 #

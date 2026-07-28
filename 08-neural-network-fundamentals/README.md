@@ -17,7 +17,7 @@ scored the same way.
 ## Data
 
 - **Diabetes** — the same 768 patients used by
-  [project 03](../03-diabetes-sampling-bootstrap/), read directly from that project's
+  [project 02](../02-diabetes-sampling-bootstrap/), read directly from that project's
   `data/` directory. Using one copy makes the comparison between a classical and a neural
   treatment of the same dataset explicit.
 - **MNIST** — downloads automatically via `keras.datasets.mnist` on first run.

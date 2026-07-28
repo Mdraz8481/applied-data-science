@@ -8,25 +8,25 @@ machine learning, deep learning, and computer vision. Each project states a ques
 front, shows the work, and ends with findings and their limitations.
 
 Every notebook runs top to bottom (see [Setup](#setup)), and all but two ship with their
-outputs committed, so the analyses read without being run. Projects 02, 05, and 06 use
+outputs committed, so the analyses read without being run. Projects 03, 04, and 05 use
 datasets that aren't redistributable; each has a `data/README.md` with a one-line download,
-and **02 and 05 need theirs before they will produce any output.**
+and **03 and 05 need theirs before they will produce any output.**
 
 | | project | in one line |
 |---|---|---|
 | **[01](01-health-metrics-correlation/)** | Grip strength correlation | At *n* = 10, "we can't tell" is the only honest conclusion |
-| **[03](03-diabetes-sampling-bootstrap/)** | Sampling and bootstrap | One 25-patient sample overstates mean glucose by 7.8% |
-| **[02](02-student-performance-eda/)** | Student performance EDA | Test preparation is the clearest — and only actionable — separator |
-| **[06](06-housing-price-regression/)** | Housing price regression | The random seed moves R² further than any modelling choice |
+| **[02](02-diabetes-sampling-bootstrap/)** | Sampling and bootstrap | One 25-patient sample overstates mean glucose by 7.8% |
+| **[03](03-student-performance-eda/)** | Student performance EDA | Test preparation is the clearest — and only actionable — separator |
+| **[04](04-housing-price-regression/)** | Housing price regression | The random seed moves R² further than any modelling choice |
 | **[05](05-credit-card-customer-segmentation/)** | Customer segmentation | The highest silhouette score comes from the least useful clustering |
-| **[04](04-covid-tweet-text-analysis/)** | COVID tweet text analysis | Naive tokenisation makes `https` the corpus's top "topic" |
+| **[06](06-covid-tweet-text-analysis/)** | COVID tweet text analysis | Naive tokenisation makes `https` the corpus's top "topic" |
 | **[07](07-newsgroup-text-classification/)** | Newsgroup classification | 21.7% of the reported accuracy was metadata leakage |
 | **[08](08-neural-network-fundamentals/)** | Neural network fundamentals | The original trained on the test set: 3.0 points of fiction |
 | **[09](09-cifar10-cnn/)** | CIFAR-10 CNN | Convolution is worth 31 points, from 9.8% of the parameters |
 | **[10](10-tweet-sentiment-lstm/)** | LSTM tweet sentiment | Every sequence model loses to a bag of words |
 
-Projects 06–10 share a through-line: each one finds a real methodological fault in its
-source and **measures** what it was worth, rather than asserting it.
+Projects 04 and 07–10 share a through-line: each one finds a real methodological fault in
+its source and **measures** what it was worth, rather than asserting it.
 
 ---
 
@@ -46,7 +46,7 @@ the data, so "we can't tell" is the only honest conclusion.
 
 ---
 
-### [03 · How well does a small sample represent its population?](03-diabetes-sampling-bootstrap/)
+### [02 · How well does a small sample represent its population?](02-diabetes-sampling-bootstrap/)
 Sampling and bootstrap resampling against the 768-patient Pima Diabetes dataset, treated
 as a known population.
 
@@ -57,13 +57,13 @@ does not.
 
 `pandas` · `numpy` · `seaborn`
 
-<img src="03-diabetes-sampling-bootstrap/results/bootstrap_distributions.png" width="720">
+<img src="02-diabetes-sampling-bootstrap/results/bootstrap_distributions.png" width="720">
 
 ---
 
 ## Exploratory analysis
 
-### [02 · What predicts student exam performance?](02-student-performance-eda/)
+### [03 · What predicts student exam performance?](03-student-performance-eda/)
 Exploratory analysis of 1,000 students across gender, parental education, lunch type, and
 test preparation.
 
@@ -73,14 +73,14 @@ distributions nearly as sharply.
 
 `pandas` · `matplotlib` · `seaborn`
 
-> The source CSV isn't redistributed here — see [`data/README.md`](02-student-performance-eda/data/README.md)
+> The source CSV isn't redistributed here — see [`data/README.md`](03-student-performance-eda/data/README.md)
 > for a one-line download. Figures generate on first run.
 
 ---
 
 ## Machine learning
 
-### [06 · What is a house worth, and how sure can we be?](06-housing-price-regression/)
+### [04 · What is a house worth, and how sure can we be?](04-housing-price-regression/)
 Linear regression on 1,460 Ames home sales, using the 36 numeric features.
 
 The model reaches **R² = 0.83** under five-fold cross-validation — a median error of 7.4%
@@ -94,9 +94,9 @@ misses.
 
 `scikit-learn` · `pandas` · `scipy`
 
-<img src="06-housing-price-regression/results/split_variance.png" width="620">
+<img src="04-housing-price-regression/results/split_variance.png" width="620">
 
-> Dataset not redistributed — see [`data/README.md`](06-housing-price-regression/data/README.md).
+> Dataset not redistributed — see [`data/README.md`](04-housing-price-regression/data/README.md).
 
 ---
 
@@ -119,7 +119,7 @@ better model**, and that silhouette is only comparable within the space the mode
 
 ## Natural language processing
 
-### [04 · What were people tweeting about in early COVID-19?](04-covid-tweet-text-analysis/)
+### [06 · What were people tweeting about in early COVID-19?](06-covid-tweet-text-analysis/)
 NLP on 3,798 tweets from March 2020: tokenisation, stopword removal, frequency analysis,
 and a sentiment-split comparison.
 
@@ -131,7 +131,7 @@ sentiment — `panic`, `fear`, `crisis`, `empty` on one side; `thank`, `support`
 
 `nltk` · `pandas` · `wordcloud` · `matplotlib`
 
-<img src="04-covid-tweet-text-analysis/results/top_tokens.png" width="620">
+<img src="06-covid-tweet-text-analysis/results/top_tokens.png" width="620">
 
 ---
 
@@ -204,7 +204,7 @@ explains why it isn't comparable.
 ---
 
 ### [10 · Does reading word order help?](10-tweet-sentiment-lstm/)
-An LSTM on the same COVID-19 tweets [project 04](04-covid-tweet-text-analysis/) analysed by
+An LSTM on the same COVID-19 tweets [project 06](06-covid-tweet-text-analysis/) analysed by
 counting words. A bag of words treats *"not worried at all"* and *"worried, not at all"* as
 identical; a sequence model does not have to.
 
@@ -282,7 +282,7 @@ methodology tightened, and findings rewritten to state their own limitations.
 
 Where an original's reported number turned out to be wrong, the correction is measured and
 written up rather than quietly dropped — see projects
-[05](05-credit-card-customer-segmentation/), [06](06-housing-price-regression/),
+[04](04-housing-price-regression/), [05](05-credit-card-customer-segmentation/),
 [07](07-newsgroup-text-classification/), [08](08-neural-network-fundamentals/),
 [09](09-cifar10-cnn/), and [10](10-tweet-sentiment-lstm/). No figure appears in these
 READMEs that wasn't produced by the committed run of its notebook.

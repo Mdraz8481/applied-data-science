@@ -10,7 +10,7 @@ Grab `StudentsPerformance.csv` from Kaggle and place it in this directory:
 - https://www.kaggle.com/datasets/spscientist/students-performance-in-exams
 
 ```
-02-student-performance-eda/data/StudentsPerformance.csv
+03-student-performance-eda/data/StudentsPerformance.csv
 ```
 
 The notebook reads it from `../data/StudentsPerformance.csv` and writes
