@@ -1,9 +1,9 @@
 # Data Analysis Portfolio
 
-Nine self-contained analyses in Python — statistical inference, exploratory data
-analysis, resampling, natural language processing, regression, text classification,
-unsupervised machine learning, deep learning, and computer vision. Each project states a
-question up front, shows the work, and ends with findings and their limitations.
+Ten self-contained analyses in Python — statistical inference, exploratory data analysis,
+resampling, natural language processing, regression, text classification, unsupervised
+machine learning, deep learning, and computer vision. Each project states a question up
+front, shows the work, and ends with findings and their limitations.
 
 Every notebook runs top to bottom from a clean checkout (see [Setup](#setup)). Projects 02
 and 05 use datasets that aren't redistributable; each has a `data/README.md` with a
@@ -176,6 +176,29 @@ explains why it isn't comparable.
 
 ---
 
+### [10 · Does reading word order help?](10-tweet-sentiment-lstm/)
+An LSTM on the same COVID-19 tweets [project 04](04-covid-tweet-text-analysis/) analysed by
+counting words. A bag of words treats *"not worried at all"* and *"worried, not at all"* as
+identical; a sequence model does not have to.
+
+| model | test accuracy | parameters |
+|---|---|---|
+| **TF-IDF + logistic regression** | **65.2%** | 35,745 |
+| LSTM (original architecture) | 61.5% | 511,391 |
+| LSTM (smaller + regularised) | 62.2% | 161,219 |
+| Bidirectional LSTM | 60.5% | 194,435 |
+
+**Every sequence model loses to the bag of words**, and the best of them is the one with the
+fewest parameters. The original LSTM hits 91.6% on training data against 57.8% on
+validation — 511,391 parameters against 2,035 tweets. The original had no validation split
+at all, so it reported a fixed seventh epoch, well past where the model began getting worse.
+
+`keras` · `tensorflow` · `scikit-learn`
+
+<img src="10-tweet-sentiment-lstm/results/model_comparison.png" width="620">
+
+---
+
 ## What these demonstrate
 
 | | |
@@ -187,6 +210,7 @@ explains why it isn't comparable.
 | **Data cleaning** | Categorical encoding, URL/entity stripping, missing-data handling |
 | **NLP** | Tokenisation, stopword removal, frequency analysis, log-ratio class comparison |
 | **Text classification** | TF-IDF weighting, multinomial Naive Bayes, linear SVM, per-class precision and recall |
+| **Sequence models** | Recurrent networks, embeddings, `TextVectorization` inside the model, capacity against corpus size |
 | **Leakage detection** | Finding and quantifying metadata leakage in a reported score |
 | **Hyperparameter tuning** | Grid search cross-validated on training data only |
 | **Unsupervised ML** | K-means, PCA, silhouette scoring, elbow method, feature scaling |
