@@ -1,9 +1,9 @@
 # Data Analysis Portfolio
 
-Seven self-contained analyses in Python — statistical inference, exploratory data
-analysis, resampling, natural language processing, regression, text classification, and
-unsupervised machine learning. Each project states a question up front, shows the work,
-and ends with findings and their limitations.
+Eight self-contained analyses in Python — statistical inference, exploratory data
+analysis, resampling, natural language processing, regression, text classification,
+unsupervised machine learning, and deep learning. Each project states a question up front,
+shows the work, and ends with findings and their limitations.
 
 Every notebook runs top to bottom from a clean checkout (see [Setup](#setup)). Projects 02
 and 05 use datasets that aren't redistributable; each has a `data/README.md` with a
@@ -129,6 +129,28 @@ the set and cannot do better — that ceiling belongs to the label taxonomy, not
 
 ---
 
+### [08 · What does a neural network actually buy you?](08-neural-network-fundamentals/)
+The same feed-forward architecture on two deliberately different problems, each measured
+against a linear model scored the same way.
+
+| | diabetes (768×8) | MNIST (60,000×784) |
+|---|---|---|
+| logistic regression | **77.5%** | 92.6% |
+| neural network | 76.0% | **96.8%** |
+
+On 768 rows of curated clinical measurements the network **loses** to logistic regression.
+On 60,000 images of raw pixels it cuts the error rate from 7.4% to 3.2%. The deciding
+factor is data volume and feature rawness, not model class.
+
+The original MNIST notebook also called `model.fit()` a second time on the *test* set.
+Measured here rather than asserted: it inflates reported accuracy from 96.8% to **99.8%**.
+
+`keras` · `tensorflow` · `scikit-learn`
+
+<img src="08-neural-network-fundamentals/results/mnist_training_curves.png" width="720">
+
+---
+
 ## What these demonstrate
 
 | | |
@@ -143,6 +165,8 @@ the set and cannot do better — that ceiling belongs to the label taxonomy, not
 | **Leakage detection** | Finding and quantifying metadata leakage in a reported score |
 | **Hyperparameter tuning** | Grid search cross-validated on training data only |
 | **Unsupervised ML** | K-means, PCA, silhouette scoring, elbow method, feature scaling |
+| **Deep learning** | Keras 3 Sequential and Functional APIs, activation choice, early stopping, reading training curves |
+| **Error analysis** | Confusion matrices, per-class breakdowns, inspecting individual failures |
 | **Visualisation** | Distribution comparison, annotated multi-panel figures, word clouds |
 | **Analytical judgment** | Reporting what the data *can't* support, and stating limitations |
 
