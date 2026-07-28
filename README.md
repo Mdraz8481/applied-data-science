@@ -1,9 +1,9 @@
 # Data Analysis Portfolio
 
-Six self-contained analyses in Python — statistical inference, exploratory data analysis,
-resampling, natural language processing, regression, and unsupervised machine learning.
-Each project states a question up front, shows the work, and ends with findings and their
-limitations.
+Seven self-contained analyses in Python — statistical inference, exploratory data
+analysis, resampling, natural language processing, regression, text classification, and
+unsupervised machine learning. Each project states a question up front, shows the work,
+and ends with findings and their limitations.
 
 Every notebook runs top to bottom from a clean checkout (see [Setup](#setup)). Projects 02
 and 05 use datasets that aren't redistributable; each has a `data/README.md` with a
@@ -110,6 +110,25 @@ misses.
 
 ---
 
+### [07 · A text classifier that was reading the wrong thing](07-newsgroup-text-classification/)
+TF-IDF and multinomial Naive Bayes across the 20 Newsgroups corpus.
+
+The naive version scores **77.4%**. It shouldn't. The documents ship with email headers
+and signature footers attached, so the highest-weight feature for `alt.atheism` is
+`keith` — a prolific poster's first name — followed by `caltech`, `livesey`, and `sgi`.
+Strip the metadata and the same model falls to **60.6%**: **21.7% of the reported score
+was the classifier identifying authors, not topics.**
+
+Rebuilt on text alone and tuned honestly it reaches **69.4%**, and every remaining
+confusion is between genuinely adjacent groups. `talk.religion.misc` is the worst class in
+the set and cannot do better — that ceiling belongs to the label taxonomy, not the model.
+
+`scikit-learn` · `pandas` · `seaborn`
+
+<img src="07-newsgroup-text-classification/results/per_class_recall.png" width="620">
+
+---
+
 ## What these demonstrate
 
 | | |
@@ -120,6 +139,9 @@ misses.
 | **Model evaluation** | Cross-validation, baseline comparison, split-seed sensitivity, leakage from preprocessing |
 | **Data cleaning** | Categorical encoding, URL/entity stripping, missing-data handling |
 | **NLP** | Tokenisation, stopword removal, frequency analysis, log-ratio class comparison |
+| **Text classification** | TF-IDF weighting, multinomial Naive Bayes, linear SVM, per-class precision and recall |
+| **Leakage detection** | Finding and quantifying metadata leakage in a reported score |
+| **Hyperparameter tuning** | Grid search cross-validated on training data only |
 | **Unsupervised ML** | K-means, PCA, silhouette scoring, elbow method, feature scaling |
 | **Visualisation** | Distribution comparison, annotated multi-panel figures, word clouds |
 | **Analytical judgment** | Reporting what the data *can't* support, and stating limitations |
