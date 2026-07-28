@@ -1,8 +1,9 @@
 # Data Analysis Portfolio
 
-Five self-contained analyses in Python — statistical inference, exploratory data analysis,
-resampling, natural language processing, and unsupervised machine learning. Each project
-states a question up front, shows the work, and ends with findings and their limitations.
+Six self-contained analyses in Python — statistical inference, exploratory data analysis,
+resampling, natural language processing, regression, and unsupervised machine learning.
+Each project states a question up front, shows the work, and ends with findings and their
+limitations.
 
 Every notebook runs top to bottom from a clean checkout (see [Setup](#setup)). Projects 02
 and 05 use datasets that aren't redistributable; each has a `data/README.md` with a
@@ -89,12 +90,34 @@ better model**, and that silhouette is only comparable within the space the mode
 
 ---
 
+### [06 · What is a house worth, and how sure can we be?](06-housing-price-regression/)
+Linear regression on 1,460 Ames home sales, using the 36 numeric features.
+
+The model reaches **R² = 0.83** under five-fold cross-validation — a median error of 7.4%
+of sale price. The more useful result concerns the evaluation: re-running the original
+single-split procedure under 20 random seeds gives R² anywhere from **0.63 to 0.91**. The
+seed moves the reported score further than any modelling decision in the notebook does.
+
+Dollar RMSE also comes out *worse* than a predict-the-mean baseline while every other
+metric is far better — back-transforming from log space punishes a handful of high-end
+misses.
+
+`scikit-learn` · `pandas` · `scipy`
+
+<img src="06-housing-price-regression/results/split_variance.png" width="620">
+
+> Dataset not redistributed — see [`data/README.md`](06-housing-price-regression/data/README.md).
+
+---
+
 ## What these demonstrate
 
 | | |
 |---|---|
 | **Statistical inference** | Pearson correlation, Fisher *z* confidence intervals, *p*-values, power reasoning |
 | **Resampling** | Bootstrap sampling distributions; estimator bias and spread |
+| **Regression** | Ordinary least squares, log-target transforms, error reported in original units |
+| **Model evaluation** | Cross-validation, baseline comparison, split-seed sensitivity, leakage from preprocessing |
 | **Data cleaning** | Categorical encoding, URL/entity stripping, missing-data handling |
 | **NLP** | Tokenisation, stopword removal, frequency analysis, log-ratio class comparison |
 | **Unsupervised ML** | K-means, PCA, silhouette scoring, elbow method, feature scaling |
