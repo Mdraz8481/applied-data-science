@@ -1,11 +1,12 @@
 # Data Analysis Portfolio
 
-Four self-contained analyses in Python — statistical inference, exploratory data analysis,
-resampling, and natural language processing. Each project states a question up front,
-shows the work, and ends with findings and their limitations.
+Five self-contained analyses in Python — statistical inference, exploratory data analysis,
+resampling, natural language processing, and unsupervised machine learning. Each project
+states a question up front, shows the work, and ends with findings and their limitations.
 
-Every notebook runs top to bottom from a clean checkout (see [Setup](#setup)), with the
-one documented exception noted below.
+Every notebook runs top to bottom from a clean checkout (see [Setup](#setup)). Projects 02
+and 05 use datasets that aren't redistributable; each has a `data/README.md` with a
+one-line download.
 
 ---
 
@@ -71,6 +72,23 @@ sentiment — `panic`, `fear`, `crisis`, `empty` on one side; `thank`, `support`
 
 ---
 
+### [05 · Segmenting credit-card customers with PCA and K-means](05-credit-card-customer-segmentation/)
+Unsupervised clustering of 8,950 customers, scored by silhouette across raw, standardised,
+and PCA-reduced feature spaces.
+
+Raw features give the **highest** silhouette score — and the least useful clustering. Six
+features are bounded in [0, 1] while `TENURE` runs 6–12, so that one feature dominates the
+distance metric and K-means effectively clusters on tenure alone. Silhouette rewards the
+resulting tight bands. The project's point is that **a higher score is not automatically a
+better model**, and that silhouette is only comparable within the space the model was fitted in.
+
+`scikit-learn` · `pandas` · `matplotlib`
+
+> Dataset not redistributed — see [`data/README.md`](05-credit-card-customer-segmentation/data/README.md).
+> Figures generate on first run.
+
+---
+
 ## What these demonstrate
 
 | | |
@@ -79,6 +97,7 @@ sentiment — `panic`, `fear`, `crisis`, `empty` on one side; `thank`, `support`
 | **Resampling** | Bootstrap sampling distributions; estimator bias and spread |
 | **Data cleaning** | Categorical encoding, URL/entity stripping, missing-data handling |
 | **NLP** | Tokenisation, stopword removal, frequency analysis, log-ratio class comparison |
+| **Unsupervised ML** | K-means, PCA, silhouette scoring, elbow method, feature scaling |
 | **Visualisation** | Distribution comparison, annotated multi-panel figures, word clouds |
 | **Analytical judgment** | Reporting what the data *can't* support, and stating limitations |
 
@@ -109,7 +128,9 @@ each project's `notebooks/` folder.
 
 These analyses began as graduate coursework (CS5530 / CS5531) and have since been
 reworked: bugs fixed, hardcoded Colab paths removed, methodology tightened, and findings
-rewritten to state their own limitations.
+rewritten to state their own limitations. Project 05 additionally corrects two errors in
+the original that invalidated its headline comparison — see its
+[README](05-credit-card-customer-segmentation/) for what changed and why it mattered.
 
 ## License
 
