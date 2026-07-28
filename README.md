@@ -1,9 +1,9 @@
 # Data Analysis Portfolio
 
-Eight self-contained analyses in Python — statistical inference, exploratory data
+Nine self-contained analyses in Python — statistical inference, exploratory data
 analysis, resampling, natural language processing, regression, text classification,
-unsupervised machine learning, and deep learning. Each project states a question up front,
-shows the work, and ends with findings and their limitations.
+unsupervised machine learning, deep learning, and computer vision. Each project states a
+question up front, shows the work, and ends with findings and their limitations.
 
 Every notebook runs top to bottom from a clean checkout (see [Setup](#setup)). Projects 02
 and 05 use datasets that aren't redistributable; each has a `data/README.md` with a
@@ -151,6 +151,31 @@ Measured here rather than asserted: it inflates reported accuracy from 96.8% to 
 
 ---
 
+### [09 · Does convolution earn its complexity?](09-cifar10-cnn/)
+A convolutional network on CIFAR-10, measured against logistic regression on raw pixels
+and against project 08's dense network on the same 3,072 inputs.
+
+| model | test accuracy | parameters |
+|---|---|---|
+| logistic regression (raw pixels) | 35.7% | 30,730 |
+| dense network (project 08) | 46.4% | 2,103,818 |
+| **convolutional network** | **77.9%** | 2,915,114 |
+
+**Convolution is worth 31 points over a dense network on identical data**, and the layers
+responsible cost only **287,008 parameters — 9.8% of the model**. The total is larger only
+because the two inherited dense layers on top carry ~90% of the weights and contribute
+almost nothing.
+
+The original reported 82.13%, having passed the test set as `validation_data` and watched
+it for 70 epochs before reporting on it. That figure isn't reused here — the notebook
+explains why it isn't comparable.
+
+`keras` · `tensorflow` · `scikit-learn`
+
+<img src="09-cifar10-cnn/results/training_curves.png" width="720">
+
+---
+
 ## What these demonstrate
 
 | | |
@@ -166,6 +191,7 @@ Measured here rather than asserted: it inflates reported accuracy from 96.8% to 
 | **Hyperparameter tuning** | Grid search cross-validated on training data only |
 | **Unsupervised ML** | K-means, PCA, silhouette scoring, elbow method, feature scaling |
 | **Deep learning** | Keras 3 Sequential and Functional APIs, activation choice, early stopping, reading training curves |
+| **Computer vision** | Convolutional layers, weight sharing, pooling and dropout, parameter budgeting across a network |
 | **Error analysis** | Confusion matrices, per-class breakdowns, inspecting individual failures |
 | **Visualisation** | Distribution comparison, annotated multi-panel figures, word clouds |
 | **Analytical judgment** | Reporting what the data *can't* support, and stating limitations |
